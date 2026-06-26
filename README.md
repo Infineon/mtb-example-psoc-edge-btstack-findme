@@ -3,10 +3,11 @@
 The code example demonstrates the implementation of a simple Bluetooth&reg; Immediate Alert Service (IAS)-based Find Me Profile (FMP) using the Infineon PSOC&trade; Edge MCU with AIROC&trade; CYW55513 Wi-Fi & Bluetooth&reg; combo chip and ModusToolbox&trade; software environment.
 
 This code example has a three project structure: CM33 secure, CM33 non-secure, and CM55 projects. All three projects are programmed to the external QSPI flash and executed in Execute in Place (XIP) mode. Extended boot launches the CM33 secure project from a fixed location in the external flash, which then configures the protection settings and launches the CM33 non-secure application. Additionally, CM33 non-secure application enables CM55 CPU and launches the CM55 application.
+> **Note:** KIT_PSE84_HMI programs all three projects to the external OSPI flash (instead of QSPI).
 
 [View this README on GitHub.](https://github.com/Infineon/mtb-example-psoc-edge-btstack-findme)
 
-[Provide feedback on this code example.](https://yourvoice.infineon.com/jfe/form/SV_1NTns53sK2yiljn?Q_EED=eyJVbmlxdWUgRG9jIElkIjoiQ0UyMzkxODAiLCJTcGVjIE51bWJlciI6IjAwMi0zOTE4MCIsIkRvYyBUaXRsZSI6IlBTT0MmdHJhZGU7IEVkZ2UgTUNVOiBCbHVldG9vdGgmcmVnOyBMRSBGaW5kIE1lIFByb2ZpbGUiLCJyaWQiOiJhcnZpbmRrdW1hci5zdXJlc2hrdW1hckBpbmZpbmVvbi5jb20iLCJEb2MgdmVyc2lvbiI6IjIuMi4wIiwiRG9jIExhbmd1YWdlIjoiRW5nbGlzaCIsIkRvYyBEaXZpc2lvbiI6Ik1DRCIsIkRvYyBCVSI6IklDVyIsIkRvYyBGYW1pbHkiOiJQU09DIn0=)
+[Provide feedback on this code example.](https://yourvoice.infineon.com/jfe/form/SV_1NTns53sK2yiljn?Q_EED=eyJVbmlxdWUgRG9jIElkIjoiQ0UyMzkxODAiLCJTcGVjIE51bWJlciI6IjAwMi0zOTE4MCIsIkRvYyBUaXRsZSI6IlBTT0MmdHJhZGU7IEVkZ2UgTUNVOiBCbHVldG9vdGgmcmVnOyBMRSBGaW5kIE1lIFByb2ZpbGUiLCJyaWQiOiJhcnZpbmRrdW1hci5zdXJlc2hrdW1hckBpbmZpbmVvbi5jb20iLCJEb2MgdmVyc2lvbiI6IjIuMy4wIiwiRG9jIExhbmd1YWdlIjoiRW5nbGlzaCIsIkRvYyBEaXZpc2lvbiI6Ik1DRCIsIkRvYyBCVSI6IklDVyIsIkRvYyBGYW1pbHkiOiJQU09DIn0=)
 
 See the [Design and implementation](docs/design_and_implementation.md) for the functional description of this code example.
 
@@ -32,6 +33,7 @@ See the [Design and implementation](docs/design_and_implementation.md) for the f
 - [PSOC&trade; Edge E84 Evaluation Kit](https://www.infineon.com/KIT_PSE84_EVAL) (`KIT_PSE84_EVAL_EPC2`) – Default value of `TARGET`
 - [PSOC&trade; Edge E84 Evaluation Kit](https://www.infineon.com/KIT_PSE84_EVAL) (`KIT_PSE84_EVAL_EPC4`)
 - [PSOC&trade; Edge E84 AI Kit](https://www.infineon.com/KIT_PSE84_AI) (`KIT_PSE84_AI`)
+- [PSOC&trade; Edge E84 HMI Kit](https://www.infineon.com/KIT_PSE84_HMI) (`KIT_PSE84_HMI`)
 
 
 ## Hardware setup
@@ -40,7 +42,7 @@ This example uses the board's default configuration. See the kit user guide to e
 
 Ensure the following jumper and pin configuration on board.
 - BOOT SW must be in the HIGH/ON position
-- J20 and J21 must be in the tristate/not connected (NC) position
+- J20 and J21 must be in the tristate/not connected (NC) position for the PSOC™ Edge E84 Evaluation Kit
 
 > **Note:** This hardware setup is not required for KIT_PSE84_AI.
 
@@ -100,7 +102,9 @@ See [Using the code example](docs/using_the_code_example.md) for instructions on
       No Alert    | LED OFF
       Mild Alert | LED BLINK
       High Alert | LED ON
-      
+
+    > **Note:** The KIT_PSE84_HMI features a single RGB LED to display both Bluetooth&reg; connection status and alert level selected on the Find Me Profile screen instead of separate LEDs. You will notice an overlapping LED color in some status.
+
       <br>
 
       **Figure 2. Testing with the AIROC&trade; Bluetooth&reg; Connect App on iOS**
@@ -158,6 +162,7 @@ Document title: *CE239180* – *PSOC&trade; Edge MCU: Bluetooth&reg; LE Find Me 
  2.0.0   | GitHub release
  2.1.0   | Added KIT_PSE84_AI BSP support
  2.2.0   | Updated design files to fix ModusToolbox&trade; v3.7 build warnings
+ 2.3.0   | Added KIT_PSE84_HMI BSP support
 <br>
 
 
